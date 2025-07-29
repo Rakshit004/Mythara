@@ -2,9 +2,9 @@ export default function Hero() {
   return (
     <section className="relative">
       <div className="bg-blue-500 h-96 md:h-screen flex items-center justify-center">
-        <img 
-          src="https://bluorng.com/cdn/shop/files/rwfdeccsx.jpg?v=1732202045&width=1500" 
-          alt="MYTHARA Collection" 
+        <img
+          src="https://bluorng.com/cdn/shop/files/rwfdeccsx.jpg?v=1732202045&width=1500"
+          alt="MYTHARA Collection"
           className="w-full h-full object-cover"
         />
       </div>
@@ -16,8 +16,8 @@ export default function Hero() {
           <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">
             NEW DROP - NOW LIVE
           </h2>
-          <a 
-            href="#" 
+          <a
+            href="#"
             className="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition duration-300"
           >
             SHOP NOW
