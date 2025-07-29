@@ -15,7 +15,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Header onGoAstroClick={openGoAstro} />
       
       <main>
         <Hero />
