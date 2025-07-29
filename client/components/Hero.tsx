@@ -2,11 +2,11 @@ export default function Hero() {
   return (
     <section className="relative">
       <div className="bg-blue-500 h-96 md:h-screen flex items-center justify-center">
-        // <img 
-        //   src="https://bluorng.com/cdn/shop/files/rwfdeccsx.jpg?v=1732202045&width=1500" 
-        //   alt="MYTHARA Collection" 
-        //   className="w-full h-full object-cover"
-        // />
+        <img 
+          src="https://bluorng.com/cdn/shop/files/rwfdeccsx.jpg?v=1732202045&width=1500" 
+          alt="MYTHARA Collection" 
+          className="w-full h-full object-cover"
+        />
       </div>
       <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
         <div className="text-center px-4">
