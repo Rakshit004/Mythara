@@ -101,7 +101,7 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
 
             {/* Go Astro Link */}
             <div className="relative">
-              <a href="#" className="nav-link">GO ASTRO</a>
+              <button onClick={onGoAstroClick} className="nav-link">GO ASTRO</button>
             </div>
           </nav>
           
