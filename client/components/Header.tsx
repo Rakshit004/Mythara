@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Menu, X } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  onGoAstroClick?: () => void;
+}
+
+export default function Header({ onGoAstroClick }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
