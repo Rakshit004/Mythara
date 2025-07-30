@@ -159,9 +159,7 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
 
             {/* Jewellery Dropdown */}
             <div className="dropdown relative">
-              <span className="nav-link cursor-pointer">
-                JEWELLERY
-              </span>
+              <span className="nav-link cursor-pointer">JEWELLERY</span>
               <div className="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-2 w-48 z-50">
                 <Link
                   to="/jewellery/earrings"
@@ -186,9 +184,7 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
 
             {/* Accessories Dropdown */}
             <div className="dropdown relative">
-              <span className="nav-link cursor-pointer">
-                ACCESSORIES
-              </span>
+              <span className="nav-link cursor-pointer">ACCESSORIES</span>
               <div className="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-2 w-48 z-50">
                 <Link
                   to="/accessories/cufflinks"
