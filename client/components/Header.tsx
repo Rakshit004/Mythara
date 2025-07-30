@@ -64,9 +64,9 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
           <nav className="hidden md:flex space-x-8 mx-auto">
             {/* Collections Dropdown */}
             <div className="dropdown relative">
-              <a href="#" className="nav-link">
+              <Link to="/collections" className="nav-link">
                 COLLECTIONS
-              </a>
+              </Link>
               <div className="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-4 w-96 z-50">
                 <div className="grid grid-cols-1 gap-4 px-4">
                   <div>
