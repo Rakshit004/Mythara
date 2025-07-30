@@ -222,6 +222,201 @@ const collections: { [key: string]: Collection } = {
         category: 'pendants'
       }
     ]
+  },
+  pearl: {
+    id: 'pearl',
+    name: 'Pearl',
+    title: 'PEARL COLLECTION',
+    description: 'Classic elegance with lustrous pearls from the depths, symbolizing purity and wisdom.',
+    bannerImage: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-banner.jpg?width=1200',
+    products: [
+      {
+        id: 'pearl-earrings-1',
+        name: 'Pearl Drop Earrings',
+        price: '₹5,990',
+        originalPrice: '₹7,990',
+        rating: 4.7,
+        reviews: 28,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-earrings-1.jpg?width=400',
+        category: 'earrings'
+      },
+      {
+        id: 'pearl-earrings-2',
+        name: 'Pearl Stud Earrings',
+        price: '₹3,990',
+        rating: 4.8,
+        reviews: 35,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-earrings-2.jpg?width=400',
+        category: 'earrings'
+      },
+      {
+        id: 'pearl-ring-1',
+        name: 'Pearl Cocktail Ring',
+        price: '₹8,990',
+        rating: 4.6,
+        reviews: 12,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-ring-1.jpg?width=400',
+        category: 'rings'
+      },
+      {
+        id: 'pearl-ring-2',
+        name: 'Pearl Statement Ring',
+        price: '₹6,990',
+        originalPrice: '₹8,990',
+        rating: 4.5,
+        reviews: 18,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-ring-2.jpg?width=400',
+        category: 'rings'
+      },
+      {
+        id: 'pearl-pendant-1',
+        name: 'Pearl Necklace Pendant',
+        price: '₹7,990',
+        rating: 4.9,
+        reviews: 24,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-pendant-1.jpg?width=400',
+        category: 'pendants'
+      },
+      {
+        id: 'pearl-pendant-2',
+        name: 'Pearl Baroque Pendant',
+        price: '₹5,990',
+        rating: 4.4,
+        reviews: 16,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-pendant-2.jpg?width=400',
+        category: 'pendants'
+      }
+    ]
+  },
+  yellow: {
+    id: 'yellow',
+    name: 'Yellow Sapphire',
+    title: 'YELLOW SAPPHIRE COLLECTION',
+    description: 'Radiant yellow sapphires that bring prosperity, wisdom, and positive energy to your life.',
+    bannerImage: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-sapphire-banner.jpg?width=1200',
+    products: [
+      {
+        id: 'yellow-earrings-1',
+        name: 'Yellow Sapphire Hoops',
+        price: '₹13,990',
+        rating: 4.8,
+        reviews: 17,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-earrings-1.jpg?width=400',
+        category: 'earrings'
+      },
+      {
+        id: 'yellow-earrings-2',
+        name: 'Yellow Sapphire Studs',
+        price: '₹9,990',
+        originalPrice: '₹12,990',
+        rating: 4.6,
+        reviews: 21,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-earrings-2.jpg?width=400',
+        category: 'earrings'
+      },
+      {
+        id: 'yellow-ring-1',
+        name: 'Yellow Sapphire Cocktail Ring',
+        price: '₹19,990',
+        rating: 4.9,
+        reviews: 9,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-ring-1.jpg?width=400',
+        category: 'rings'
+      },
+      {
+        id: 'yellow-ring-2',
+        name: 'Yellow Sapphire Band',
+        price: '₹14,990',
+        rating: 4.7,
+        reviews: 13,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-ring-2.jpg?width=400',
+        category: 'rings'
+      },
+      {
+        id: 'yellow-pendant-1',
+        name: 'Yellow Sapphire Sun Pendant',
+        price: '₹11,990',
+        rating: 4.8,
+        reviews: 19,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-pendant-1.jpg?width=400',
+        category: 'pendants'
+      },
+      {
+        id: 'yellow-pendant-2',
+        name: 'Yellow Sapphire Drop Pendant',
+        price: '₹8,990',
+        originalPrice: '₹10,990',
+        rating: 4.5,
+        reviews: 14,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/yellow-pendant-2.jpg?width=400',
+        category: 'pendants'
+      }
+    ]
+  },
+  'blue-sapphire': {
+    id: 'blue-sapphire',
+    name: 'Blue Sapphire',
+    title: 'BLUE SAPPHIRE COLLECTION',
+    description: 'Deep blue sapphires that embody loyalty, nobility, and divine favor with timeless elegance.',
+    bannerImage: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-banner.jpg?width=1200',
+    products: [
+      {
+        id: 'blue-sapphire-earrings-1',
+        name: 'Blue Sapphire Chandelier Earrings',
+        price: '₹16,990',
+        rating: 4.9,
+        reviews: 14,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-earrings-1.jpg?width=400',
+        category: 'earrings'
+      },
+      {
+        id: 'blue-sapphire-earrings-2',
+        name: 'Blue Sapphire Drop Earrings',
+        price: '₹12,990',
+        originalPrice: '₹15,990',
+        rating: 4.7,
+        reviews: 20,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-earrings-2.jpg?width=400',
+        category: 'earrings'
+      },
+      {
+        id: 'blue-sapphire-ring-1',
+        name: 'Blue Sapphire Royal Ring',
+        price: '₹24,990',
+        rating: 5.0,
+        reviews: 5,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-ring-1.jpg?width=400',
+        category: 'rings'
+      },
+      {
+        id: 'blue-sapphire-ring-2',
+        name: 'Blue Sapphire Vintage Ring',
+        price: '₹18,990',
+        rating: 4.8,
+        reviews: 11,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-ring-2.jpg?width=400',
+        category: 'rings'
+      },
+      {
+        id: 'blue-sapphire-pendant-1',
+        name: 'Blue Sapphire Star Pendant',
+        price: '₹13,990',
+        rating: 4.6,
+        reviews: 18,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-pendant-1.jpg?width=400',
+        category: 'pendants'
+      },
+      {
+        id: 'blue-sapphire-pendant-2',
+        name: 'Blue Sapphire Ocean Pendant',
+        price: '₹10,990',
+        originalPrice: '₹12,990',
+        rating: 4.4,
+        reviews: 15,
+        image: 'https://cdn.builder.io/api/v1/image/assets/TEMP/blue-sapphire-pendant-2.jpg?width=400',
+        category: 'pendants'
+      }
+    ]
   }
 };
 
