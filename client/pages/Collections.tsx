@@ -188,6 +188,10 @@ export default function Collections() {
           </div>
         </div>
       </section>
+
+      <Footer />
+
+      <GoAstroDrawer isOpen={isGoAstroOpen} onClose={closeGoAstro} />
     </div>
   );
 }
