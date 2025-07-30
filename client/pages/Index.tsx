@@ -6,7 +6,8 @@ import ProductGrid, {
   latestDropProducts,
   moreFromMytharaProducts,
 } from "../components/ProductGrid";
-import StoresSection from "../components/StoresSection";
+import SecondaryHero from "../components/SecondaryHero";
+import StoriesSection from "../components/StoriesSection";
 import Footer from "../components/Footer";
 import GoAstroDrawer from "../components/GoAstroDrawer";
 
