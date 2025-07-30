@@ -128,22 +128,30 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
                     <h4 className="font-bold mb-2">Other Collections</h4>
                     <ul className="space-y-2">
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/celestial"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Celestial Dreams
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/mythical"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Mythical Creatures
-                        </a>
+                        </Link>
                       </li>
                     </ul>
+                  </div>
+                  <div className="pt-4 border-t">
+                    <Link
+                      to="/collections"
+                      className="block px-4 py-2 text-black font-medium hover:bg-gray-100"
+                    >
+                      View All Collections →
+                    </Link>
                   </div>
                 </div>
               </div>
