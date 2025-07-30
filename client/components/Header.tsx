@@ -75,52 +75,52 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
                     </h4>
                     <ul className="grid grid-cols-2 gap-2">
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/emerald"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Emerald
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/ruby"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Ruby
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/yellow"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Yellow
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/sapphire"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Sapphire
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/blue-sapphire"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Blue Sapphire
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
-                          href="#"
+                        <Link
+                          to="/collections/pearl"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Pearl
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
