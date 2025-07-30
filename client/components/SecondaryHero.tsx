@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export default function SecondaryHero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -21,8 +21,8 @@ export default function SecondaryHero() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -43,8 +43,8 @@ export default function SecondaryHero() {
           <h2 className="text-xl md:text-2xl font-medium text-white mb-8">
             Every piece tells a story of excellence and dedication
           </h2>
-          <a 
-            href="#" 
+          <a
+            href="#"
             className="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition duration-300"
           >
             DISCOVER OUR CRAFT

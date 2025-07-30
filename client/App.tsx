@@ -28,7 +28,10 @@ export default function App() {
               path="/collections/:collectionId"
               element={<CollectionDetail />}
             />
-            <Route path="/jewellery/:categoryId" element={<JewelleryDetail />} />
+            <Route
+              path="/jewellery/:categoryId"
+              element={<JewelleryDetail />}
+            />
             <Route
               path="/accessories/:categoryId"
               element={<AccessoriesDetail />}
