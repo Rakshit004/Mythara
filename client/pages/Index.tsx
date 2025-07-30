@@ -33,7 +33,8 @@ export default function Index() {
           backgroundColor="bg-gray-50"
         />
 
-        <StoresSection />
+        <SecondaryHero />
+        <StoriesSection />
       </main>
 
       <Footer />
