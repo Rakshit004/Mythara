@@ -58,6 +58,7 @@ const collections: Collection[] = [
 
 export default function Collections() {
   const [email, setEmail] = useState('');
+  const [isGoAstroOpen, setIsGoAstroOpen] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,8 +66,12 @@ export default function Collections() {
     setEmail('');
   };
 
+  const openGoAstro = () => setIsGoAstroOpen(true);
+  const closeGoAstro = () => setIsGoAstroOpen(false);
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header onGoAstroClick={openGoAstro} />
       {/* Hero Section */}
       <section className="relative bg-gray-100 py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
