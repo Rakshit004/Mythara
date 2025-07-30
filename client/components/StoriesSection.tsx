@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 interface Story {
   id: string;
   title: string;
@@ -5,6 +7,7 @@ interface Story {
   description: string;
   image: string;
   date: string;
+  collectionRoute: string;
 }
 
 const stories: Story[] = [
