@@ -17,15 +17,17 @@ const stories: Story[] = [
     excerpt: "Discover the ancient techniques behind our emerald mastery",
     description: "Our master craftsmen have perfected the art of emerald cutting over generations, ensuring each stone captures light in the most magnificent way.",
     date: "January 2025",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/emerald-story.jpg?width=400"
+    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/emerald-story.jpg?width=400",
+    collectionRoute: "/collections/emerald"
   },
   {
-    id: "2", 
+    id: "2",
     title: "Ruby: The Stone of Kings",
     excerpt: "Explore the royal heritage of our ruby collection",
     description: "From ancient royalty to modern elegance, rubies have always symbolized power and passion. Our collection honors this rich legacy.",
     date: "December 2024",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/ruby-story.jpg?width=400"
+    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/ruby-story.jpg?width=400",
+    collectionRoute: "/collections/ruby"
   },
   {
     id: "3",
@@ -33,7 +35,8 @@ const stories: Story[] = [
     excerpt: "The wisdom and mystery behind sapphire craftsmanship",
     description: "Each sapphire in our collection tells a story of wisdom and divine favor, carefully selected and crafted to perfection.",
     date: "November 2024",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sapphire-story.jpg?width=400"
+    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/sapphire-story.jpg?width=400",
+    collectionRoute: "/collections/sapphire"
   },
   {
     id: "4",
@@ -41,7 +44,8 @@ const stories: Story[] = [
     excerpt: "The journey from ocean depths to timeless elegance",
     description: "Our pearl collection represents the perfect harmony between nature's gifts and human artistry, creating pieces of eternal beauty.",
     date: "October 2024",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-story.jpg?width=400"
+    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/pearl-story.jpg?width=400",
+    collectionRoute: "/collections/pearl"
   },
   {
     id: "5",
@@ -49,7 +53,8 @@ const stories: Story[] = [
     excerpt: "How the cosmos influences our design philosophy",
     description: "Drawing inspiration from the stars and planets, our celestial collection brings the magic of the universe to your jewelry box.",
     date: "September 2024",
-    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/celestial-story.jpg?width=400"
+    image: "https://cdn.builder.io/api/v1/image/assets/TEMP/celestial-story.jpg?width=400",
+    collectionRoute: "/collections/celestial"
   }
 ];
 
