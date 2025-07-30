@@ -66,25 +66,26 @@ export default function StoriesSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stories.map((story) => (
-            <div key={story.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <img 
-                src={story.image} 
-                alt={story.title} 
-                className="w-full h-48 object-cover"
+            <Link
+              key={story.id}
+              to={story.collectionRoute}
+              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 group hover:transform hover:-translate-y-1"
+            >
+              <img
+                src={story.image}
+                alt={story.title}
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="p-6">
                 <div className="text-sm text-gray-500 mb-2">{story.date}</div>
-                <h3 className="font-bold text-xl mb-3">{story.title}</h3>
+                <h3 className="font-bold text-xl mb-3 group-hover:text-gray-700 transition-colors duration-300">{story.title}</h3>
                 <p className="text-gray-600 mb-4 font-medium">{story.excerpt}</p>
                 <p className="text-gray-700 text-sm mb-4">{story.description}</p>
-                <a 
-                  href="#" 
-                  className="inline-block text-black font-medium hover:text-gray-600 transition duration-300"
-                >
-                  Read More →
-                </a>
+                <span className="inline-block text-black font-medium group-hover:text-gray-600 transition duration-300">
+                  Explore Collection →
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         
