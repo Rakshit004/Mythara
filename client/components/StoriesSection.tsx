@@ -90,12 +90,12 @@ export default function StoriesSection() {
         </div>
         
         <div className="text-center mt-12">
-          <a 
-            href="#" 
+          <Link
+            to="/collections"
             className="bg-black text-white px-8 py-3 font-bold hover:bg-gray-800 transition duration-300"
           >
-            VIEW ALL STORIES
-          </a>
+            VIEW ALL COLLECTIONS
+          </Link>
         </div>
       </div>
     </section>
