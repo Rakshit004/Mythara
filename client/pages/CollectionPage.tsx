@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import ProductGrid from "../components/ProductGrid";
 import { getProductsByCollection } from "../lib/shopify";
 
+
+
 const COLLECTION_LABELS: Record<string, string> = {
   // Collections
   emerald: "Emerald Collection",
@@ -28,13 +30,18 @@ const COLLECTION_LABELS: Record<string, string> = {
 };
 
 export default function CollectionPage() {
-  const { handle = "" } = useParams<{ handle: string }>();
-  const label = COLLECTION_LABELS[handle] ?? handle.replace(/-/g, " ").toUpperCase();
+  const { handle, gender, type } = useParams<{ handle?: string; gender?: string; type?: string }>();
+
+  const collectionHandle = gender && type ? `${gender}-${type}` : (handle ?? "");
+  const labelKey = type ? type : (handle ?? "");
+  const label = gender
+    ? `${gender.toUpperCase()} — ${COLLECTION_LABELS[type ?? ""] ?? (type ?? "").replace(/-/g, " ").toUpperCase()}`
+    : (COLLECTION_LABELS[labelKey] ?? labelKey.replace(/-/g, " ").toUpperCase());
 
   const { data: products = [], isLoading } = useQuery({
-    queryKey: ["collection", handle],
-    queryFn: () => getProductsByCollection(handle),
-    enabled: !!handle,
+    queryKey: ["collection", collectionHandle],
+    queryFn: () => getProductsByCollection(collectionHandle),
+    enabled: !!collectionHandle,
   });
 
   return (

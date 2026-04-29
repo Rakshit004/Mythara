@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Menu, X, ShoppingBag } from "lucide-react";
+import { Search, Menu, X, ShoppingBag, Heart } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 interface HeaderProps {
   onGoAstroClick?: () => void;
@@ -10,6 +11,7 @@ interface HeaderProps {
 export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { count, openCart } = useCart();
+  const { count: wishlistCount, openWishlist } = useWishlist();
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
@@ -47,14 +49,14 @@ export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center">
             <img
               src="/logo2.jpeg"
               alt="MYTARA & CO"
-              className="h-20 w-20 object-cover rounded-sm"
+              className="h-28 w-28 object-cover rounded-sm"
               style={{ objectPosition: "center 55%" }}
             />
-            <span className="text-white font-bold tracking-[0.15em] text-sm hidden sm:block">
+            <span className="text-white font-bold tracking-[0.15em] text-sm hidden sm:block -ml-3">
               MYTARA & CO
             </span>
           </Link>
@@ -108,15 +110,20 @@ export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
             {/* Jewellery Dropdown */}
             <div className="dropdown relative">
               <a href="#" className="nav-link text-white hover:text-gray-300">JEWELLERY</a>
-              <div className="dropdown-menu absolute hidden bg-black border border-zinc-700 mt-2 py-2 w-48 z-50">
-                {[
-                  ["Earrings", "earrings"],
-                  ["Rings", "rings"],
-                  ["Lockets", "lockets"],
-                ].map(([label, handle]) => (
-                  <Link key={handle} to={`/jewellery/${handle}`} className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-zinc-800 text-sm">
-                    {label}
-                  </Link>
+              <div className="dropdown-menu absolute hidden bg-black border border-zinc-700 mt-2 py-4 w-64 z-50">
+                {["men", "women", "kids"].map((gender) => (
+                  <div key={gender} className="px-4 mb-3">
+                    <p className="text-xs tracking-widest text-zinc-500 font-bold mb-1">{gender.toUpperCase()}</p>
+                    {["earrings", "rings", "lockets"].map((type) => (
+                      <Link
+                        key={type}
+                        to={`/jewellery/${gender}/${type}`}
+                        className="block px-2 py-1.5 text-gray-300 hover:text-white hover:bg-zinc-800 text-sm capitalize"
+                      >
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                      </Link>
+                    ))}
+                  </div>
                 ))}
               </div>
             </div>
@@ -149,6 +156,14 @@ export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
               <Search className="w-5 h-5" />
             </button>
             <a href="#" className="hidden md:block text-sm hover:text-gray-300">LOGIN</a>
+            <button onClick={openWishlist} className="relative focus:outline-none hover:text-gray-300" aria-label="Open wishlist">
+              <Heart className="w-5 h-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-white text-black text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                  {wishlistCount}
+                </span>
+              )}
+            </button>
             <button onClick={openCart} className="relative focus:outline-none hover:text-gray-300" aria-label="Open cart">
               <ShoppingBag className="w-5 h-5" />
               {count > 0 && (
@@ -181,11 +196,20 @@ export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
           </li>
           <li>
             <p className="py-2 font-medium text-zinc-500 text-xs tracking-widest">JEWELLERY</p>
-            <ul className="pl-2 space-y-1">
-              {[["Earrings","earrings"],["Rings","rings"],["Lockets","lockets"]].map(([label, handle]) => (
-                <li key={handle}><Link to={`/jewellery/${handle}`} onClick={closeMobileMenu} className="block py-1 text-gray-300 hover:text-white text-sm">{label}</Link></li>
-              ))}
-            </ul>
+            {["men", "women", "kids"].map((gender) => (
+              <div key={gender} className="pl-2 mb-2">
+                <p className="text-zinc-600 text-xs tracking-widest mb-1">{gender.toUpperCase()}</p>
+                <ul className="pl-2 space-y-1">
+                  {["earrings", "rings", "lockets"].map((type) => (
+                    <li key={type}>
+                      <Link to={`/jewellery/${gender}/${type}`} onClick={closeMobileMenu} className="block py-1 text-gray-300 hover:text-white text-sm capitalize">
+                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </li>
           <li>
             <p className="py-2 font-medium text-zinc-500 text-xs tracking-widest">ACCESSORIES</p>

@@ -1,4 +1,6 @@
+import { Heart } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 export interface Product {
   id: string;
@@ -33,6 +35,7 @@ export default function ProductGrid({
   isLoading = false,
 }: ProductGridProps) {
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isWishlisted } = useWishlist();
 
   return (
     <section className={`py-16 px-4 ${backgroundColor}`}>
@@ -50,13 +53,32 @@ export default function ProductGrid({
                 <ProductSkeleton key={i} />
               ))
             : products.map((product) => (
-                <div key={product.id} className="product-card group">
-                  <div className="overflow-hidden mb-4">
+                <div key={product.id} className="product-card group relative">
+                  <div className="overflow-hidden mb-4 relative">
                     <img
                       src={product.image}
                       alt={product.name}
                       className="w-full h-auto product-image"
                     />
+                    <button
+                      onClick={() =>
+                        isWishlisted(product.id)
+                          ? removeFromWishlist(product.id)
+                          : addToWishlist({
+                              id: product.id,
+                              variantId: product.variantId ?? "",
+                              name: product.name,
+                              image: product.image,
+                              price: product.salePrice,
+                            })
+                      }
+                      className="absolute top-2 right-2 bg-white rounded-full p-1.5 shadow hover:scale-110 transition-transform"
+                      aria-label="Add to wishlist"
+                    >
+                      <Heart
+                        className={`w-4 h-4 ${isWishlisted(product.id) ? "fill-black text-black" : "text-gray-400"}`}
+                      />
+                    </button>
                   </div>
                   <h3 className="font-bold text-lg mb-1">{product.name}</h3>
                   <div className="text-gray-600 mb-3">

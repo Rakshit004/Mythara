@@ -11,7 +11,9 @@ import NotFound from "./pages/NotFound";
 import CollectionPage from "./pages/CollectionPage";
 import GoAstroPage from "./pages/GoAstroPage";
 import { CartProvider } from "./context/CartContext";
+import { WishlistProvider } from "./context/WishlistContext";
 import CartDrawer from "./components/CartDrawer";
+import WishlistDrawer from "./components/WishlistDrawer";
 
 const queryClient = new QueryClient();
 
@@ -19,20 +21,24 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <CartProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/collections/:handle" element={<CollectionPage />} />
-            <Route path="/jewellery/:handle" element={<CollectionPage />} />
-            <Route path="/accessories/:handle" element={<CollectionPage />} />
-            <Route path="/go-astro" element={<GoAstroPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-        <CartDrawer />
+        <WishlistProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/collections/:handle" element={<CollectionPage />} />
+              <Route path="/jewellery/:gender/:type" element={<CollectionPage />} />
+              <Route path="/jewellery/:handle" element={<CollectionPage />} />
+              <Route path="/accessories/:handle" element={<CollectionPage />} />
+              <Route path="/go-astro" element={<GoAstroPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+          <CartDrawer />
+          <WishlistDrawer />
+        </WishlistProvider>
       </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>

@@ -73,8 +73,36 @@ export default function Footer() {
         </div>
       </section>
 
+      {/* About Us Section */}
+      <section className="py-24 px-4 bg-black text-white">
+        <div className="container mx-auto max-w-3xl text-center">
+          <p className="text-xs tracking-[0.4em] text-gray-500 mb-4 uppercase">Our Story</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-12">About Us</h2>
+
+          <p className="text-gray-300 leading-relaxed mb-6 text-base">
+            Our story begins with a desire to bridge the gap between the ancient cosmos and the modern individual. We saw that gemstone jewelry was often viewed as traditional or exclusive, disconnected from a new generation seeking personal meaning and style. Our mission became clear: to normalize these powerful gems by transforming them into fashionable, spiritual accessories for everyone. We believe that the stories of the stars and the power of the elements aren't just myths of the past; they are a vital part of our narrative today.
+          </p>
+          <p className="text-gray-300 leading-relaxed mb-6 text-base">
+            Our entire brand is built upon this connection. We founded our collections on five core gemstones, each representing one of the fundamental elements of the universe and its ruling celestial body: <span className="text-white font-semibold">Emerald for Nature</span>, <span className="text-white font-semibold">Ruby for Fire</span>, <span className="text-white font-semibold">Pearl for Water</span>, <span className="text-white font-semibold">Blue Sapphire for Air</span>, and <span className="text-white font-semibold">Yellow Sapphire for Space</span>.
+          </p>
+          <p className="text-gray-300 leading-relaxed mb-16 text-base">
+            Every piece we craft is a wearable story, allowing you to carry the mythological energy of your chosen element and its planet, making the power of the cosmos a part of your daily life.
+          </p>
+
+          {/* Logo */}
+          <div className="flex justify-center">
+            <img
+              src="/logo2.jpeg"
+              alt="MYTARA & CO"
+              className="w-40 h-40 object-cover"
+              style={{ objectPosition: "center 55%" }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="bg-black text-white py-12 px-4">
+      <footer className="bg-black text-white py-12 px-4 border-t border-zinc-800">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Column 1 */}
