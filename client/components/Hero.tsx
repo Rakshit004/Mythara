@@ -31,12 +31,12 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full">
         <video
           ref={videoRef} // Attach the ref to the video element
-          src="/hero-vid.mp4"
+          src="/hero-vid-new.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-[120%] object-cover object-center absolute top-0 left-0 will-change-transform" // Increased height to allow for parallax movement
+          className="w-full h-[120%] object-cover object-center absolute top-0 left-0 will-change-transform"
           style={{ transform: 'translate3d(0, 0, 0)' }} // Initial transform for smooth transitions
         ></video>
       </div>

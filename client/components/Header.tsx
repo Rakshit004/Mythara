@@ -1,148 +1,104 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, ShoppingBag } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 interface HeaderProps {
   onGoAstroClick?: () => void;
 }
 
-export default function Header({ onGoAstroClick }: HeaderProps) {
+export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    document.body.style.overflow = !isMobileMenuOpen ? "hidden" : "auto";
-  };
+  const { count, openCart } = useCart();
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
     document.body.style.overflow = "auto";
   };
 
+  const toggleMobileMenu = () => {
+    const next = !isMobileMenuOpen;
+    setIsMobileMenuOpen(next);
+    document.body.style.overflow = next ? "hidden" : "auto";
+  };
+
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-black text-white text-sm py-2 px-4 flex justify-between items-center">
+      <div className="bg-zinc-900 text-white text-xs py-2 px-4 flex justify-between items-center border-b border-zinc-800">
         <div className="flex space-x-4">
-          <a href="#" className="hover:text-gray-300">
-            Free Shipping on Orders Over ₹5000
-          </a>
-          <a href="#" className="hover:text-gray-300">
-            New Drop - Shop Now
-          </a>
+          <span className="text-gray-400 tracking-wider">Free Shipping on Orders Over ₹5000</span>
+          <span className="text-gray-400 tracking-wider hidden sm:block">New Drop — Shop Now</span>
         </div>
-        <div className="hidden md:flex space-x-4">
-          <a href="#" className="hover:text-gray-300">
-            Log In
-          </a>
-          <a href="#" className="hover:text-gray-300">
-            Store Locator
-          </a>
-          <a href="#" className="hover:text-gray-300">
-            Customer Support
-          </a>
+        <div className="hidden md:flex space-x-4 tracking-wider">
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">Log In</a>
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">Store Locator</a>
+          <a href="#" className="text-gray-400 hover:text-white transition-colors">Customer Support</a>
         </div>
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <header className="sticky top-0 z-50 bg-black border-b border-zinc-800">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+
           {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMobileMenu}
-            className="md:hidden focus:outline-none"
-          >
+          <button onClick={toggleMobileMenu} className="md:hidden focus:outline-none text-white">
             <Menu className="w-6 h-6" />
           </button>
 
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold tracking-tight">
-            MYTHARA
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="/logo2.jpeg"
+              alt="MYTARA & CO"
+              className="h-20 w-20 object-cover rounded-sm"
+              style={{ objectPosition: "center 55%" }}
+            />
+            <span className="text-white font-bold tracking-[0.15em] text-sm hidden sm:block">
+              MYTARA & CO
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 mx-auto">
+
             {/* Collections Dropdown */}
             <div className="dropdown relative">
-              <a href="#" className="nav-link">
-                COLLECTIONS
-              </a>
-              <div className="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-4 w-96 z-50">
+              <a href="#" className="nav-link text-white hover:text-gray-300">COLLECTIONS</a>
+              <div className="dropdown-menu absolute hidden bg-black border border-zinc-700 mt-2 py-4 w-96 z-50">
                 <div className="grid grid-cols-1 gap-4 px-4">
                   <div>
-                    <h4 className="font-bold mb-2">
-                      ASTRO: Journey to the Astrological Realm
-                    </h4>
-                    <ul className="grid grid-cols-2 gap-2">
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Emerald
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Ruby
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Yellow
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Sapphire
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Blue Sapphire
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Pearl
-                        </a>
-                      </li>
+                    <h4 className="font-bold mb-2 text-white text-xs tracking-widest">ASTRO COLLECTION</h4>
+                    <ul className="grid grid-cols-2 gap-1">
+                      {[
+                        ["Emerald", "emerald"],
+                        ["Ruby", "ruby"],
+                        ["Yellow Sapphire", "yellow-sapphire"],
+                        ["Sapphire", "sapphire"],
+                        ["Blue Sapphire", "blue-sapphire"],
+                        ["Pearl", "pearl"],
+                      ].map(([label, handle]) => (
+                        <li key={handle}>
+                          <Link to={`/collections/${handle}`} className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-zinc-800 text-sm">
+                            {label}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-2">Other Collections</h4>
-                    <ul className="space-y-2">
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Celestial Dreams
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Mythical Creatures
-                        </a>
-                      </li>
+                    <h4 className="font-bold mb-2 text-white text-xs tracking-widest">OTHER COLLECTIONS</h4>
+                    <ul className="space-y-1">
+                      {[
+                        ["Celestial Dreams", "celestial-dreams"],
+                        ["Mythical Creatures", "mythical-creatures"],
+                      ].map(([label, handle]) => (
+                        <li key={handle}>
+                          <Link to={`/collections/${handle}`} className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-zinc-800 text-sm">
+                            {label}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -151,151 +107,105 @@ export default function Header({ onGoAstroClick }: HeaderProps) {
 
             {/* Jewellery Dropdown */}
             <div className="dropdown relative">
-              <a href="#" className="nav-link">
-                JEWELLERY
-              </a>
-              <div className="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-2 w-48 z-50">
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Earrings
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Rings
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Lockets
-                </a>
+              <a href="#" className="nav-link text-white hover:text-gray-300">JEWELLERY</a>
+              <div className="dropdown-menu absolute hidden bg-black border border-zinc-700 mt-2 py-2 w-48 z-50">
+                {[
+                  ["Earrings", "earrings"],
+                  ["Rings", "rings"],
+                  ["Lockets", "lockets"],
+                ].map(([label, handle]) => (
+                  <Link key={handle} to={`/jewellery/${handle}`} className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-zinc-800 text-sm">
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
 
             {/* Accessories Dropdown */}
             <div className="dropdown relative">
-              <a href="#" className="nav-link">
-                ACCESSORIES
-              </a>
-              <div className="dropdown-menu absolute hidden bg-white shadow-lg rounded mt-2 py-2 w-48 z-50">
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Cufflinks
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Bracelets
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Brooches
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Tie Pins
-                </a>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                  Belt Buckles
-                </a>
+              <a href="#" className="nav-link text-white hover:text-gray-300">ACCESSORIES</a>
+              <div className="dropdown-menu absolute hidden bg-black border border-zinc-700 mt-2 py-2 w-48 z-50">
+                {[
+                  ["Cufflinks", "cufflinks"],
+                  ["Bracelets", "bracelets"],
+                  ["Brooches", "brooches"],
+                  ["Tie Pins", "tie-pins"],
+                  ["Belt Buckles", "belt-buckles"],
+                ].map(([label, handle]) => (
+                  <Link key={handle} to={`/accessories/${handle}`} className="block px-4 py-2 text-gray-300 hover:text-white hover:bg-zinc-800 text-sm">
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
 
-            {/* Go Astro Link */}
-            <div className="relative">
-              <button onClick={onGoAstroClick} className="nav-link">
-                GO ASTRO
-              </button>
-            </div>
+            {/* Go Astro */}
+            <Link to="/go-astro" className="nav-link text-white hover:text-gray-300">GO ASTRO</Link>
           </nav>
 
           {/* Right Icons */}
-          <div className="flex items-center space-x-6">
-            <button className="focus:outline-none">
-              <Search className="w-6 h-6" />
+          <div className="flex items-center space-x-6 text-white">
+            <button className="focus:outline-none hover:text-gray-300">
+              <Search className="w-5 h-5" />
             </button>
-            <a href="#" className="hidden md:block">
-              LOGIN
-            </a>
+            <a href="#" className="hidden md:block text-sm hover:text-gray-300">LOGIN</a>
+            <button onClick={openCart} className="relative focus:outline-none hover:text-gray-300" aria-label="Open cart">
+              <ShoppingBag className="w-5 h-5" />
+              {count > 0 && (
+                <span className="absolute -top-2 -right-2 bg-white text-black text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                  {count}
+                </span>
+              )}
+            </button>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
-      <div
-        className={`mobile-menu fixed inset-y-0 right-0 w-64 bg-white shadow-lg z-50 p-4 overflow-y-auto ${isMobileMenuOpen ? "open" : ""}`}
-      >
+      <div className={`mobile-menu fixed inset-y-0 right-0 w-64 bg-black border-l border-zinc-800 z-50 p-4 overflow-y-auto ${isMobileMenuOpen ? "open" : ""}`}>
         <div className="flex justify-between items-center mb-8">
-          <span className="text-xl font-bold">Menu</span>
-          <button onClick={closeMobileMenu} className="focus:outline-none">
+          <span className="text-white font-bold tracking-widest text-sm">MENU</span>
+          <button onClick={closeMobileMenu} className="focus:outline-none text-white">
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <ul className="space-y-4">
+        <ul className="space-y-4 text-white">
           <li>
-            <a href="#" className="block py-2 font-medium">
-              NEW IN
-            </a>
-          </li>
-          <li>
-            <a href="#" className="block py-2 font-medium">
-              APPAREL
-            </a>
-            <ul className="pl-4 mt-2 space-y-2">
-              <li>
-                <a href="#" className="block py-1">
-                  Top Wear
-                </a>
-              </li>
-              <li>
-                <a href="#" className="block py-1">
-                  Bottom Wear
-                </a>
-              </li>
-              <li>
-                <a href="#" className="block py-1">
-                  Accessories
-                </a>
-              </li>
+            <p className="py-2 font-medium text-zinc-500 text-xs tracking-widest">COLLECTIONS</p>
+            <ul className="pl-2 space-y-1">
+              {[["Emerald","emerald"],["Ruby","ruby"],["Yellow Sapphire","yellow-sapphire"],["Sapphire","sapphire"],["Blue Sapphire","blue-sapphire"],["Pearl","pearl"],["Celestial Dreams","celestial-dreams"],["Mythical Creatures","mythical-creatures"]].map(([label, handle]) => (
+                <li key={handle}><Link to={`/collections/${handle}`} onClick={closeMobileMenu} className="block py-1 text-gray-300 hover:text-white text-sm">{label}</Link></li>
+              ))}
             </ul>
           </li>
           <li>
-            <a href="#" className="block py-2 font-medium">
-              STORES
-            </a>
-            <ul className="pl-4 mt-2 space-y-2">
-              <li>
-                <a href="#" className="block py-1">
-                  Delhi
-                </a>
-              </li>
-              <li>
-                <a href="#" className="block py-1">
-                  Mumbai
-                </a>
-              </li>
-              <li>
-                <a href="#" className="block py-1">
-                  Hyderabad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="block py-1">
-                  Ahmedabad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="block py-1">
-                  Gurugram
-                </a>
-              </li>
+            <p className="py-2 font-medium text-zinc-500 text-xs tracking-widest">JEWELLERY</p>
+            <ul className="pl-2 space-y-1">
+              {[["Earrings","earrings"],["Rings","rings"],["Lockets","lockets"]].map(([label, handle]) => (
+                <li key={handle}><Link to={`/jewellery/${handle}`} onClick={closeMobileMenu} className="block py-1 text-gray-300 hover:text-white text-sm">{label}</Link></li>
+              ))}
             </ul>
           </li>
           <li>
-            <a href="#" className="block py-2 font-medium">
-              LOGIN
-            </a>
+            <p className="py-2 font-medium text-zinc-500 text-xs tracking-widest">ACCESSORIES</p>
+            <ul className="pl-2 space-y-1">
+              {[["Cufflinks","cufflinks"],["Bracelets","bracelets"],["Brooches","brooches"],["Tie Pins","tie-pins"],["Belt Buckles","belt-buckles"]].map(([label, handle]) => (
+                <li key={handle}><Link to={`/accessories/${handle}`} onClick={closeMobileMenu} className="block py-1 text-gray-300 hover:text-white text-sm">{label}</Link></li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <Link to="/go-astro" onClick={closeMobileMenu} className="block py-2 font-bold tracking-widest text-sm">GO ASTRO</Link>
+          </li>
+          <li>
+            <a href="#" className="block py-2 text-gray-300 hover:text-white text-sm">LOGIN</a>
           </li>
         </ul>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={closeMobileMenu}
-        />
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={closeMobileMenu} />
       )}
     </>
   );

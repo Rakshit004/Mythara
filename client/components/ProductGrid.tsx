@@ -1,5 +1,8 @@
-interface Product {
+import { useCart } from "../context/CartContext";
+
+export interface Product {
   id: string;
+  variantId?: string;
   name: string;
   originalPrice?: string;
   salePrice: string;
@@ -10,13 +13,27 @@ interface ProductGridProps {
   title: string;
   products: Product[];
   backgroundColor?: string;
+  isLoading?: boolean;
+}
+
+function ProductSkeleton() {
+  return (
+    <div className="animate-pulse">
+      <div className="bg-gray-200 w-full aspect-square mb-4 rounded" />
+      <div className="bg-gray-200 h-5 w-3/4 mb-2 rounded" />
+      <div className="bg-gray-200 h-4 w-1/2 rounded" />
+    </div>
+  );
 }
 
 export default function ProductGrid({
   title,
   products,
   backgroundColor = "bg-white",
+  isLoading = false,
 }: ProductGridProps) {
+  const { addToCart } = useCart();
+
   return (
     <section className={`py-16 px-4 ${backgroundColor}`}>
       <div className="container mx-auto">
@@ -28,97 +45,47 @@ export default function ProductGrid({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <div key={product.id} className="product-card group">
-              <a href="#" className="block">
-                <div className="overflow-hidden mb-4">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-auto product-image"
-                  />
-                </div>
-                <h3 className="font-bold text-lg mb-1">{product.name}</h3>
-                <div className="text-gray-600 mb-2">
-                  {product.originalPrice && (
-                    <span className="line-through mr-2">
-                      {product.originalPrice}
-                    </span>
+          {isLoading
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <ProductSkeleton key={i} />
+              ))
+            : products.map((product) => (
+                <div key={product.id} className="product-card group">
+                  <div className="overflow-hidden mb-4">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-auto product-image"
+                    />
+                  </div>
+                  <h3 className="font-bold text-lg mb-1">{product.name}</h3>
+                  <div className="text-gray-600 mb-3">
+                    {product.originalPrice && (
+                      <span className="line-through mr-2">
+                        {product.originalPrice}
+                      </span>
+                    )}
+                    <span className="font-bold">{product.salePrice}</span>
+                  </div>
+                  {product.variantId && (
+                    <button
+                      onClick={() =>
+                        addToCart(
+                          product.variantId!,
+                          product.name,
+                          product.image,
+                          product.salePrice,
+                        )
+                      }
+                      className="w-full border border-black py-2 text-xs font-bold tracking-widest hover:bg-black hover:text-white transition-colors"
+                    >
+                      ADD TO CART
+                    </button>
                   )}
-                  <span className="font-bold">{product.salePrice}</span>
                 </div>
-              </a>
-            </div>
-          ))}
+              ))}
         </div>
       </div>
     </section>
   );
 }
-
-// Sample data for the two product sections
-export const latestDropProducts: Product[] = [
-  {
-    id: "1",
-    name: "Emerald Earrings",
-    originalPrice: "₹6,995",
-    salePrice: "₹5,995",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry1.jpg?width=400",
-  },
-  {
-    id: "2",
-    name: "Ruby Earrings",
-    originalPrice: "₹6,995",
-    salePrice: "₹5,995",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry2.jpg?width=400",
-  },
-  {
-    id: "3",
-    name: "TRAINING KIT JERSEY",
-    originalPrice: "₹6,995",
-    salePrice: "₹5,995",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry3.jpg?width=400",
-  },
-  {
-    id: "4",
-    name: "LOST INDIGO DENIMS",
-    originalPrice: "₹11,995",
-    salePrice: "₹9,995",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry4.jpg?width=400",
-  },
-];
-
-export const moreFromMytharaProducts: Product[] = [
-  {
-    id: "5",
-    name: "Sapphire Earrings",
-    salePrice: "₹4,495",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry5.jpg?width=400",
-  },
-  {
-    id: "6",
-    name: "Pearl Earrings",
-    salePrice: "₹3,995",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry6.jpg?width=400",
-  },
-  {
-    id: "7",
-    name: "ORANGE BOX BOX T-SHIRT",
-    salePrice: "₹4,495",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry7.jpg?width=400",
-  },
-  {
-    id: "8",
-    name: "BLACK GATOR-AIDE T-SHIRT",
-    salePrice: "₹4,995",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets/TEMP/jewelry8.jpg?width=400",
-  },
-];

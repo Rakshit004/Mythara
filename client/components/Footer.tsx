@@ -12,35 +12,63 @@ export default function Footer() {
 
   return (
     <>
-      {/* About Section */}
-      <section className="py-16 px-4 bg-gray-100">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Feel the Luxury of Premium Streetwear with BLUORNG
-          </h2>
-          <p className="text-gray-700 mb-6">
-            Streetwear is now widely accepted as a popular style that comes from
-            the underground culture, and India is no exception. The once-popular
-            apparel of loose-fitting jeans, graphic t-shirts, and high-top
-            sneakers has evolved into a statement of freedom, luxury, and
-            creativity.
-          </p>
-          <p className="text-gray-700 mb-6">
-            Embodying the essence of premium jewellery, MYTHARA is a rising
-            luxury jewellery brand in India. With the rise of jewellery culture
-            in India, the sense of elegance and fashion comes hand in hand.
-            Heavily influenced by celestial themes, our jewellery focuses on
-            high-quality precious metals and gemstones with exquisite
-            craftsmanship. Shaping the future of Indian jewellery with a unique
-            blend of tradition and contemporary designs.
-          </p>
-          <div className="text-center">
-            <a
-              href="#"
-              className="inline-block bg-black text-white px-6 py-3 font-bold hover:bg-gray-800 transition duration-300"
-            >
-              READ MORE
-            </a>
+      {/* Craftsmen Section */}
+      <section className="py-20 px-4 bg-[#f7f5f2]">
+        <div className="container mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-xs tracking-[0.4em] text-gray-400 mb-3 uppercase">Our Heritage</p>
+            <h2 className="text-4xl font-bold tracking-tight mb-4">
+              The Hands Behind Our Design
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+              Every MYTARA & CO piece is born from the hands of master artisans who have dedicated their lives to the ancient craft of jewellery-making.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                image: "/placeholder.svg",
+                name: "Ramesh Kumar",
+                role: "Master Goldsmith",
+                description:
+                  "With over 30 years of experience in Jaipur's renowned jewellery district, Ramesh shapes gold into celestial forms with unmatched precision.",
+              },
+              {
+                image: "/placeholder.svg",
+                name: "Suresh Mehta",
+                role: "Gemstone Setter",
+                description:
+                  "Suresh specialises in setting precious stones — each emerald, ruby, and sapphire placed with millimetre accuracy to capture and hold light.",
+              },
+              {
+                image: "/placeholder.svg",
+                name: "Kavita Sharma",
+                role: "Enamel & Finish Artist",
+                description:
+                  "Kavita's meticulous finishing work gives every MYTARA & CO piece its signature lustre — a process refined over two decades of dedicated craft.",
+              },
+              {
+                image: "/placeholder.svg",
+                name: "Arjun Nair",
+                role: "Design Artisan",
+                description:
+                  "Arjun bridges traditional motifs and contemporary aesthetics, translating celestial inspiration into the clean lines that define our collections.",
+              },
+            ].map((craftsman) => (
+              <div key={craftsman.name} className="group">
+                <div className="overflow-hidden mb-5 bg-gray-200 aspect-[3/4]">
+                  <img
+                    src={craftsman.image}
+                    alt={craftsman.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <h3 className="font-bold text-lg mb-0.5">{craftsman.name}</h3>
+                <p className="text-xs tracking-widest text-gray-400 mb-2 uppercase">{craftsman.role}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{craftsman.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -247,8 +275,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="mb-4 md:mb-0">
                 <p>
-                  © 2025 MYTHARA JEWELLERY PRIVATE LIMITED, ALL RIGHTS
-                  RESERVED.
+                  © 2025 MYTARA & CO JEWELLERY PRIVATE LIMITED. ALL RIGHTS RESERVED.
                 </p>
               </div>
               <div className="flex space-x-4">

@@ -1,50 +1,55 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
-import ProductGrid, {
-  latestDropProducts,
-  moreFromMytharaProducts,
-} from "../components/ProductGrid";
-import StoresSection from "../components/StoresSection";
+import ProductGrid from "../components/ProductGrid";
 import Footer from "../components/Footer";
 import GoAstroDrawer from "../components/GoAstroDrawer";
+import WhyMythara from "../components/WhyMythara";
+import { getProducts } from "../lib/shopify";
 
 export default function Index() {
   const [isGoAstroOpen, setIsGoAstroOpen] = useState(false);
 
-  const openGoAstro = () => setIsGoAstroOpen(true);
-  const closeGoAstro = () => setIsGoAstroOpen(false);
+  const { data: allProducts = [], isLoading } = useQuery({
+    queryKey: ["shopify-products"],
+    queryFn: () => getProducts(8),
+  });
+
+  const latestDrop = allProducts.slice(0, 4);
+  const moreFromMythara = allProducts.slice(4, 8);
 
   return (
     <div className="min-h-screen bg-white">
-      <Header onGoAstroClick={openGoAstro} />
+      <Header onGoAstroClick={() => setIsGoAstroOpen(true)} />
 
       <main>
         <Hero />
         <Marquee />
 
-        <ProductGrid title="LATEST DROP" products={latestDropProducts} />
-
         <ProductGrid
-          title="MORE FROM MYTHARA"
-          products={moreFromMytharaProducts}
-          backgroundColor="bg-gray-50"
+          title="LATEST DROP"
+          products={latestDrop}
+          isLoading={isLoading}
         />
 
-        <StoresSection />
+        <ProductGrid
+          title="MORE FROM MYTARA & CO"
+          products={moreFromMythara}
+          backgroundColor="bg-gray-50"
+          isLoading={isLoading}
+        />
+
+        <WhyMythara />
       </main>
 
       <Footer />
 
-      <GoAstroDrawer isOpen={isGoAstroOpen} onClose={closeGoAstro} />
-
-      {/* Go Astro Trigger - we'll add this functionality to the header component */}
-      <style jsx global>{`
-        .nav-link[href="#"]:last-child {
-          cursor: pointer;
-        }
-      `}</style>
+      <GoAstroDrawer
+        isOpen={isGoAstroOpen}
+        onClose={() => setIsGoAstroOpen(false)}
+      />
     </div>
   );
 }
