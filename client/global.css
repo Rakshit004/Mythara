@@ -144,15 +144,19 @@
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 1px;
     bottom: -2px;
     left: 0;
-    background-color: black;
+    background-color: white;
     transition: width 0.3s ease;
   }
 
   .nav-link:hover:after {
     width: 100%;
+  }
+
+  .marquee-track {
+    animation: marqueeLoop 35s linear infinite;
   }
 
   .mobile-menu {
@@ -171,5 +175,14 @@
   }
   100% {
     transform: translate(-100%, 0);
+  }
+}
+
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
