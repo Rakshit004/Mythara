@@ -1,9 +1,11 @@
 import { Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 
 export interface Product {
   id: string;
+  handle?: string;
   variantId?: string;
   name: string;
   originalPrice?: string;
@@ -55,11 +57,13 @@ export default function ProductGrid({
             : products.map((product) => (
                 <div key={product.id} className="product-card group relative">
                   <div className="overflow-hidden mb-4 relative">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-auto product-image"
-                    />
+                    <Link to={product.handle ? `/products/${product.handle}` : "#"}>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-auto product-image"
+                      />
+                    </Link>
                     <button
                       onClick={() =>
                         isWishlisted(product.id)
@@ -80,7 +84,9 @@ export default function ProductGrid({
                       />
                     </button>
                   </div>
-                  <h3 className="font-bold text-lg mb-1">{product.name}</h3>
+                  <Link to={product.handle ? `/products/${product.handle}` : "#"} className="hover:underline">
+                    <h3 className="font-bold text-lg mb-1">{product.name}</h3>
+                  </Link>
                   <div className="text-gray-600 mb-3">
                     {product.originalPrice && (
                       <span className="line-through mr-2">

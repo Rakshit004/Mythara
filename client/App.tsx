@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CollectionPage from "./pages/CollectionPage";
 import GoAstroPage from "./pages/GoAstroPage";
+import ProductPage from "./pages/ProductPage";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import CartDrawer from "./components/CartDrawer";
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/jewellery/:handle" element={<CollectionPage />} />
               <Route path="/accessories/:handle" element={<CollectionPage />} />
               <Route path="/go-astro" element={<GoAstroPage />} />
+              <Route path="/products/:handle" element={<ProductPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

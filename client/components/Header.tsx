@@ -130,14 +130,6 @@ export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
               </div>
             </div>
 
-            {/* NEW IN — pill button (featured) */}
-            <Link
-              to="/collections/new-in"
-              className="flex items-center bg-white text-black text-xs font-bold tracking-widest px-5 py-2 rounded-full hover:bg-gray-200 transition-colors mx-2"
-            >
-              NEW IN
-            </Link>
-
             {/* Accessories Dropdown */}
             <div className="dropdown relative">
               <button className="nav-link flex items-center gap-1 text-white text-xs font-semibold tracking-widest px-4 py-2 hover:text-gray-300 transition-colors">
@@ -203,11 +195,6 @@ export default function Header({ onGoAstroClick: _unused }: HeaderProps) {
         </div>
 
         <ul className="space-y-5 text-white">
-          <li>
-            <Link to="/collections/new-in" onClick={closeMobileMenu} className="inline-block bg-white text-black text-xs font-bold tracking-widest px-5 py-2 rounded-full mb-4">
-              NEW IN
-            </Link>
-          </li>
           <li>
             <p className="py-1 font-bold text-zinc-500 text-xs tracking-widest">COLLECTIONS</p>
             <ul className="pl-2 space-y-1 mt-1">

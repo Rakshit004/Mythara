@@ -230,6 +230,72 @@ export async function getProductsByCollection(
   });
 }
 
+export interface ProductVariant {
+  id: string;
+  title: string;
+  availableForSale: boolean;
+  price: string;
+  compareAtPrice?: string;
+  options: { name: string; value: string }[];
+}
+
+export interface ProductDetail {
+  id: string;
+  handle: string;
+  title: string;
+  descriptionHtml: string;
+  images: string[];
+  variants: ProductVariant[];
+  options: { name: string; values: string[] }[];
+}
+
+export async function getProductByHandle(handle: string): Promise<ProductDetail | null> {
+  const data = await shopifyFetch<any>(
+    `
+    query GetProduct($handle: String!) {
+      product(handle: $handle) {
+        id title handle descriptionHtml
+        images(first: 10) { edges { node { url } } }
+        variants(first: 100) {
+          edges {
+            node {
+              id title availableForSale
+              price { amount currencyCode }
+              compareAtPrice { amount currencyCode }
+              selectedOptions { name value }
+            }
+          }
+        }
+        options { name values }
+      }
+    }
+  `,
+    { handle },
+  );
+
+  const p = data.product;
+  if (!p) return null;
+
+  return {
+    id: p.id,
+    handle: p.handle,
+    title: p.title,
+    descriptionHtml: p.descriptionHtml ?? "",
+    images: p.images.edges.map(({ node }: any) => node.url),
+    options: p.options,
+    variants: p.variants.edges.map(({ node }: any) => ({
+      id: node.id,
+      title: node.title,
+      availableForSale: node.availableForSale,
+      price: formatPrice(node.price.amount, node.price.currencyCode),
+      compareAtPrice: node.compareAtPrice
+        ? formatPrice(node.compareAtPrice.amount, node.compareAtPrice.currencyCode)
+        : undefined,
+      options: node.selectedOptions,
+    })),
+  };
+}
+
 export async function removeLineFromCart(
   cartId: string,
   lineId: string,
